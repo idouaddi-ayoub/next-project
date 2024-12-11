@@ -48,17 +48,18 @@ export const MacbookScroll = ({
     }
   }, []);
 
+  //transform the screen's image scale
   const scaleX = useTransform(
     scrollYProgress,
     [0, 0.3],
-    [1.2, isMobile ? 1 : 1.5]
+    [1.2, isMobile ? 1 : 2]
   );
   const scaleY = useTransform(
     scrollYProgress,
     [0, 0.3],
-    [0.6, isMobile ? 1 : 1.5]
+    [0.6, isMobile ? 1 : 2]
   );
-  const translate = useTransform(scrollYProgress, [0, 1], [0, 1500]);
+  const translate = useTransform(scrollYProgress, [0, 1], [0, 700]);
   const rotate = useTransform(scrollYProgress, [0.1, 0.12, 0.3], [-28, -28, 0]);
   const textTransform = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
@@ -66,14 +67,14 @@ export const MacbookScroll = ({
   return (
     <div
       ref={ref}
-      className="min-h-[200vh]  flex flex-col items-center py-0 md:py-80 justify-start flex-shrink-0 [perspective:800px] transform md:scale-100  scale-[0.35] sm:scale-50"
+      className="min-h-[100vh] sm:min-h-[50vh] flex flex-col items-center pb-44 md:py-64 justify-start flex-shrink-0 [perspective:800px] transform md:scale-100 scale-[0.35] sm:scale-50"
     >
       <motion.h2
         style={{
           translateY: textTransform,
           opacity: textOpacity,
         }}
-        className="dark:text-white text-neutral-800 text-3xl font-bold mb-20 text-center"
+        className="dark:text-white text-neutral-800 text-3xl font-bold text-center"
       ></motion.h2>
       {/* Lid */}
       <Lid
@@ -155,9 +156,10 @@ export const Lid = ({
         <div className="absolute inset-0 bg-[#272729] rounded-lg" />
         <Image
           src={src as string}
-          alt="aceternity logo"
+          alt="CDI logo"
+          draggable="false"
           fill
-          className="object-cover object-left-top absolute rounded-lg inset-0 h-full w-full"
+          className="object-cover absolute rounded-lg inset-0 h-full w-full"
         />
       </motion.div>
     </div>
@@ -167,7 +169,7 @@ export const Lid = ({
 export const Trackpad = () => {
   return (
     <div
-      className="w-[40%] mx-auto h-32  rounded-xl my-1"
+      className="w-[40%] mx-auto h-32 rounded-xl my-1"
       style={{
         boxShadow: "0px 0px 1px 1px #00000020 inset",
       }}

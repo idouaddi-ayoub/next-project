@@ -1,61 +1,203 @@
+"use client";
 import React from "react";
 import { MacbookScroll } from "../../components/ui/macbook-scroll";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { BackgroundBeams } from "@/components/ui/background-beams";
+import HyperText from "@/components/ui/hyper-text";
 
 export default function MacbookScrollDemo() {
   return (
-    <div className="overflow-hidden dark:bg-[#0B0B0F] bg-white w-full">
+    <div className="overflow-hidden dark:bg-[#0B0B0F] w-full">
+      <BackgroundBeams />
+      <HyperText
+        className="text-8xl font-bold text-white dark:text-white"
+        text="BECOME MORE"
+      />
       <MacbookScroll
         badge={
-          <Link href="https://peerlist.io/manuarora">
-            <Badge className="h-10 w-10 transform -rotate-12" />
+          <Link href="/">
+            <Logo className="transform -rotate-12" />
           </Link>
         }
-        src={`/assets/img/bzi.png`}
+        src={`/assets/img/CDI_logo.png`}
         showGradient={false}
       />
     </div>
   );
 }
-// Peerlist logo
-const Badge = ({ className }: { className?: string }) => {
+
+const Logo = ({ className }: { className?: string }) => {
   return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 56 56"
-      fill="none"
+    <motion.svg
       xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 100 100"
+      width={100}
+      height={100}
+      initial="hidden"
+      animate="visible"
       className={className}
     >
-      <path
-        d="M56 28C56 43.464 43.464 56 28 56C12.536 56 0 43.464 0 28C0 12.536 12.536 0 28 0C43.464 0 56 12.536 56 28Z"
-        fill="#00AA45"
-      ></path>
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M28 54C42.3594 54 54 42.3594 54 28C54 13.6406 42.3594 2 28 2C13.6406 2 2 13.6406 2 28C2 42.3594 13.6406 54 28 54ZM28 56C43.464 56 56 43.464 56 28C56 12.536 43.464 0 28 0C12.536 0 0 12.536 0 28C0 43.464 12.536 56 28 56Z"
-        fill="#219653"
-      ></path>
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M27.0769 12H15V46H24.3846V38.8889H27.0769C34.7305 38.8889 41 32.9048 41 25.4444C41 17.984 34.7305 12 27.0769 12ZM24.3846 29.7778V21.1111H27.0769C29.6194 21.1111 31.6154 23.0864 31.6154 25.4444C31.6154 27.8024 29.6194 29.7778 27.0769 29.7778H24.3846Z"
-        fill="#24292E"
-      ></path>
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M18 11H29.0769C36.2141 11 42 16.5716 42 23.4444C42 30.3173 36.2141 35.8889 29.0769 35.8889H25.3846V43H18V11ZM25.3846 28.7778H29.0769C32.1357 28.7778 34.6154 26.39 34.6154 23.4444C34.6154 20.4989 32.1357 18.1111 29.0769 18.1111H25.3846V28.7778Z"
-        fill="white"
-      ></path>
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M17 10H29.0769C36.7305 10 43 15.984 43 23.4444C43 30.9048 36.7305 36.8889 29.0769 36.8889H26.3846V44H17V10ZM19 12V42H24.3846V34.8889H29.0769C35.6978 34.8889 41 29.7298 41 23.4444C41 17.1591 35.6978 12 29.0769 12H19ZM24.3846 17.1111H29.0769C32.6521 17.1111 35.6154 19.9114 35.6154 23.4444C35.6154 26.9775 32.6521 29.7778 29.0769 29.7778H24.3846V17.1111ZM26.3846 19.1111V27.7778H29.0769C31.6194 27.7778 33.6154 25.8024 33.6154 23.4444C33.6154 21.0864 31.6194 19.1111 29.0769 19.1111H26.3846Z"
-        fill="#24292E"
-      ></path>
-    </svg>
+      <defs>
+        <style>
+          {".strokefill{stroke:white;}"}
+          {".fill{fill:white;}"}
+        </style>
+      </defs>
+      {/* fill */}
+      <g id="Layer_1" data-name="Layer 1">
+        {/* C */}
+        <motion.path
+          className="fill"
+          d="M62.5 20 H34 L10 68.5 L67 68.5 L71 60 L25 60 L39.5 29 L59 29Z"
+          animate="visible"
+          initial="hidden"
+          variants={svgFill}
+          strokeWidth={0.5}
+          stroke="black"
+        />
+        {/* D */}
+        <motion.path
+          className="fill"
+          d="M75 20 H66.6 L61 33 L41.5 33 L30.5 57 L59 57Z"
+          animate="visible"
+          initial="hidden"
+          variants={svgFill}
+          strokeWidth={0.5}
+          stroke="black"
+        />
+        {/* ° */}
+        <motion.path
+          fill="#E5E7EB"
+          d="M57.9 40 H47.9 L43.5 49 L53.5 49Z"
+          animate="visible"
+          initial="hidden"
+          variants={svgIdle}
+          strokeWidth={0.5}
+          stroke="black"
+        />
+        {/* . */}
+        <motion.path
+          className="fill"
+          d="M90 20 H80 L75.5 29 L85.5 29Z"
+          animate="visible"
+          initial="hidden"
+          variants={svgFill}
+          strokeWidth={0.5}
+          stroke="black"
+        />
+        {/* I */}
+        <motion.path
+          className="fill"
+          d="M83.25 32.75 H73.5 L62.25 57 L72.25 57Z"
+          animate="visible"
+          initial="hidden"
+          variants={svgFill}
+          strokeWidth={0.5}
+          stroke="black"
+        />
+        {/* stroke */}
+        <g id="Layer_2" data-name="Layer 2">
+          {/* C */}
+          <motion.path
+            className="strokefill"
+            fill="none"
+            d="M62.5 20 H34 L10 68.5 L67 68.5 L71 60 L25 60 L39.5 29 L59 29Z"
+            animate="visible"
+            initial="hidden"
+            variants={svgPath}
+            strokeWidth={0.5}
+          />
+
+          {/* D */}
+          <motion.path
+            className="strokefill"
+            fill="none"
+            d="M75 20 H66.6 L61 33 L41.5 33 L30.5 57 L59 57Z"
+            animate="visible"
+            initial="hidden"
+            variants={svgPath}
+            strokeWidth={0.5}
+          />
+          {/* ° */}
+          <motion.path
+            className="strokefill"
+            fill="none"
+            d="M57.9 40 H47.9 L43.5 49 L53.5 49Z"
+            animate="visible"
+            initial="hidden"
+            variants={svgPath}
+            strokeWidth={0.5}
+          />
+          {/* . */}
+          <motion.path
+            className="strokefill"
+            fill="none"
+            d="M90 20 H80 L75.5 29 L85.5 29Z"
+            animate="visible"
+            initial="hidden"
+            variants={svgPath}
+            strokeWidth={0.5}
+          />
+          {/* I */}
+          <motion.path
+            className="strokefill"
+            fill="none"
+            d="M83.25 32.75 H73.5 L62.25 57 L72.25 57Z"
+            animate="visible"
+            initial="hidden"
+            variants={svgPath}
+            strokeWidth={0.5}
+          />
+        </g>
+      </g>
+    </motion.svg>
   );
+};
+
+const svgPath = {
+  hidden: {
+    opacity: 0,
+    pathLength: 0,
+  },
+  visible: {
+    opacity: 1,
+    pathLength: 1,
+    transition: {
+      duration: 2,
+      ease: "easeInOut",
+    },
+  },
+};
+
+const svgFill = {
+  hidden: {
+    opacity: 0,
+    pathLength: 0,
+  },
+  visible: {
+    opacity: 1,
+    pathLength: 1,
+    transition: {
+      duration: 2,
+      ease: "easeInOut",
+      delay: 2,
+    },
+  },
+};
+
+const svgIdle = {
+  hidden: {
+    opacity: 0,
+    pathLength: 0,
+  },
+  visible: {
+    opacity: 1,
+    pathLength: 1,
+    transition: {
+      duration: 2,
+      ease: "easeInOut",
+      delay: 2,
+    },
+  },
 };

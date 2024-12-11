@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import Link from "next/link";
-
+import { FloatingNav } from "../../components/ui/floating-navbar";
+import { IconHome, IconMessage, IconUser } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
@@ -52,25 +53,23 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ];
 
-export default function NavigationMenuDemo() {
+export function NavigationMenuDemo() {
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center p-5">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+            <NavigationMenuTrigger>About</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] bg-gray-600">
                 <li className="row-span-3">
                   <NavigationMenuLink asChild>
                     <a
-                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md bg-black"
                       href="/"
                     >
                       {/* <Icons.logo className="h-6 w-6" /> */}
-                      <div className="mb-2 mt-4 text-lg font-medium">
-                        shadcn/ui
-                      </div>
+                      <div className="mb-2 mt-4 text-lg font-medium">CDI</div>
                       <p className="text-sm leading-tight text-muted-foreground">
                         Beautifully designed components that you can copy and
                         paste into your apps. Accessible. Customizable. Open
@@ -145,3 +144,30 @@ const ListItem = React.forwardRef<
   );
 });
 ListItem.displayName = "ListItem";
+
+export function FloatingNavDemo() {
+  const navItems = [
+    {
+      name: "Home",
+      link: "/",
+      icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "About",
+      link: "/about",
+      icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "Contact",
+      link: "/contact",
+      icon: (
+        <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />
+      ),
+    },
+  ];
+  return (
+    <div className="relative  w-full">
+      <FloatingNav navItems={navItems} />
+    </div>
+  );
+}

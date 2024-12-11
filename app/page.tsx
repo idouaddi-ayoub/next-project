@@ -1,5 +1,11 @@
-import MacbookScrollDemo from "./component/Hero";
+import Hero from "./component/Hero";
+import Content from "./component/Content";
 
 export default function Home() {
-  return <MacbookScrollDemo />;
+  return (
+    <div>
+      <Hero />
+      <Content />
+    </div>
+  );
 }
