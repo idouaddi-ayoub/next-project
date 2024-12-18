@@ -55,7 +55,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function NavigationMenuDemo() {
   return (
-    <div className="flex justify-center items-center p-5">
+    <div className="flex justify-center items-center p-6 bg-gray-600 absolute w-full">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -105,6 +105,13 @@ export function NavigationMenuDemo() {
                 ))}
               </ul>
             </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link href="/docs" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Documentation
+              </NavigationMenuLink>
+            </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Link href="/docs" legacyBehavior passHref>

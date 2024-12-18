@@ -1,16 +1,33 @@
-"use client";
+import * as React from "react";
 
-import React from "react";
-import { ButtonShimmer } from "@/components/button";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 
-export const Content = () => {
+export default function Content() {
   return (
-    <div className="p-12">
-      <ButtonShimmer />
-
-      <div className="text-white">Section</div>
-    </div>
+    <Carousel
+      opts={{
+        align: "start",
+      }}
+      className="w-full items-center justify-center pt-20"
+    >
+      <CarouselContent>
+        {Array.from({ length: 5 }).map((_, index) => (
+          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+            <div className="p-1">
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center p-6">
+                  <span className="text-3xl font-semibold">{index + 1} x</span>
+                </CardContent>
+              </Card>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+    </Carousel>
   );
-};
-
-export default Content;
+}
