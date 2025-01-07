@@ -80,19 +80,24 @@ const ReviewCard = ({
 
 export default function Overview() {
   return (
-    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg md:shadow-xl pt-20">
-      <Marquee pauseOnHover className="[--duration:20s] pb-2">
-        {firstRow.map((review) => (
-          <ReviewCard key={review.username} {...review} />
-        ))}
-      </Marquee>
-      <Marquee reverse pauseOnHover className="[--duration:20s] pt-2">
-        {secondRow.map((review) => (
-          <ReviewCard key={review.username} {...review} />
-        ))}
-      </Marquee>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-gray-950"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-gray-950"></div>
+    <div>
+      <div className="text-6xl text-white text-center pb-20 pt-20">
+        LEROYS JUNKING
+      </div>
+      <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg md:shadow-xl ">
+        <Marquee pauseOnHover className="[--duration:20s] pb-2">
+          {firstRow.map((review) => (
+            <ReviewCard key={review.username} {...review} />
+          ))}
+        </Marquee>
+        <Marquee reverse pauseOnHover className="[--duration:20s] pt-2">
+          {secondRow.map((review) => (
+            <ReviewCard key={review.username} {...review} />
+          ))}
+        </Marquee>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-gray-950"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-gray-950"></div>
+      </div>
     </div>
   );
 }

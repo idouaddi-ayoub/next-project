@@ -12,13 +12,17 @@ import {
   IconTableColumn,
 } from "@tabler/icons-react";
 
-export const ButtonShimmer = () => {
+type Props = {
+  children?: string;
+};
+
+export function ButtonShimmer(props: Props) {
   return (
-    <button className="inline-flex h-10 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#4EB848,55%,#000103)] bg-[length:200%_100%] px-10 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-      Shimmer
+    <button className="inline-flex h-10 w-40 sm:w-80 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#4EB848,55%,#000103)] bg-[length:200%_100%] font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+      {props.children}
     </button>
   );
-};
+}
 
 export const Button1 = () => {
   return (
@@ -68,7 +72,7 @@ const people = [
 
 export function AnimatedTooltipPreview() {
   return (
-    <div className="flex flex-row items-center justify-center mb-10 w-full">
+    <div className="flex flex-row items-center mb-10 w-full">
       <AnimatedTooltip items={people} />
     </div>
   );
@@ -76,7 +80,7 @@ export function AnimatedTooltipPreview() {
 
 export function EvervaultCardDemo() {
   return (
-    <div className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start mx-auto p-4 relative h-[40rem] w-[35rem] ">
+    <div className="border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-start mx-auto p-4 relative h-[38rem] w-[35rem] sm:w-[30rem]">
       <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-white" />
       <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-white" />
       <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-white" />
