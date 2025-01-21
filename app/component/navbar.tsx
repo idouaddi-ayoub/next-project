@@ -14,6 +14,17 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import HeaderLogo from "@/components/headerLogo";
+import { AnimatePresence, motion } from "framer-motion";
+import { useClerk } from "@clerk/nextjs";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
+const clerkPubKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -54,83 +65,225 @@ const components: { title: string; href: string; description: string }[] = [
 ];
 
 export function NavigationMenuDemo() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const menuVariants = {
+    closed: {
+      opacity: 0,
+      x: "100%",
+      transition: { duration: 0.2 },
+    },
+    open: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.3 },
+    },
+  };
+
   return (
-    <div className="flex justify-around items-center text-white p-6 absolute w-full">
-      <div className="">LOGO</div>
-      {/* add logo */}
-      <NavigationMenu className="hidden lg:block">
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>About</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] bg-black">
-                <li className="row-span-3">
-                  <NavigationMenuLink asChild>
-                    <a
-                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md bg-black"
-                      href="/"
-                    >
-                      {/* <Icons.logo className="h-6 w-6" /> */}
-                      <div className="mb-2 mt-4 text-lg font-medium">CDI</div>
-                      <p className="text-sm leading-tight text-muted-foreground">
-                        Beautifully designed components that you can copy and
-                        paste into your apps. Accessible. Customizable. Open
-                        Source.
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                </li>
-                <ListItem href="/docs" title="Introduction">
-                  Re-usable components built using Radix UI and Tailwind CSS.
-                </ListItem>
-                <ListItem href="/docs/installation" title="Installation">
-                  How to install dependencies and structure your app.
-                </ListItem>
-                <ListItem href="/docs/primitives/typography" title="Typography">
-                  Styles for headings, paragraphs, lists...etc
-                </ListItem>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-black">
-                {components.map((component) => (
-                  <ListItem
-                    key={component.title}
-                    title={component.title}
-                    href={component.href}
-                  >
-                    {component.description}
+    <ClerkProvider
+      publishableKey={clerkPubKey}
+      afterSignOutUrl={"/"}
+      appearance={{
+        variables: {
+          colorPrimary: "green",
+          colorBackground: "black",
+          colorText: "white",
+          colorNeutral: "white",
+        },
+      }}
+    >
+      <div className="flex justify-between items-center text-white p-3 absolute w-full">
+        <div className="w-16 justify-center xl:ml-24">
+          <Link href="/">
+            <HeaderLogo />
+          </Link>
+        </div>
+        {/* add logo */}
+        <NavigationMenu className="hidden xl:block">
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>About Us</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] bg-black">
+                  <li className="row-span-3">
+                    <NavigationMenuLink asChild>
+                      <a
+                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md bg-black"
+                        href="/"
+                      >
+                        {/* <Icons.logo className="h-6 w-6" /> */}
+                        <div className="mb-2 mt-4 text-lg font-medium">CDI</div>
+                        <p className="text-sm leading-tight text-muted-foreground">
+                          Beautifully designed components that you can copy and
+                          paste into your apps. Accessible. Customizable. Open
+                          Source.
+                        </p>
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                  <ListItem href="/docs" title="Introduction">
+                    Re-usable components built using Radix UI and Tailwind CSS.
                   </ListItem>
-                ))}
+                  <ListItem href="/docs/installation" title="Installation">
+                    How to install dependencies and structure your app.
+                  </ListItem>
+                  <ListItem
+                    href="/docs/primitives/typography"
+                    title="Typography"
+                  >
+                    Styles for headings, paragraphs, lists...etc
+                  </ListItem>
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Activities</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-black">
+                  {components.map((component) => (
+                    <ListItem
+                      key={component.title}
+                      title={component.title}
+                      href={component.href}
+                    >
+                      {component.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/docs" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Members
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/docs" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Blog
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/docs" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Tools
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+        <div className="flex  gap-4 pr-8 xl:pr-24 ">
+          <div>
+            <SignedOut>
+              <ul className="space-x-5 flex">
+                <li className="px-5 py-2 border-2 rounded-lg text-tertiary">
+                  <SignInButton />
+                </li>
               </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/docs" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Documentation
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/docs" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Documentation
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
-      <h1 className="">LOGO</h1>
-    </div>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </div>
+          {/* Mobile Hamburger Menu */}
+          <div className="xl:hidden pb-6 -mr-6">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="focus:outline-none"
+              aria-label="Toggle Menu"
+            >
+              <div className="flex flex-col justify-between w-6 h-5">
+                <motion.span
+                  animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+                  className="w-full h-0.5 bg-white block"
+                />
+                <motion.span
+                  animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+                  className="w-full h-0.5 bg-white block"
+                />
+                <motion.span
+                  animate={
+                    isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }
+                  }
+                  className="w-full h-0.5 bg-white block"
+                />
+              </div>
+            </button>
+            {/* Mobile Menu Panel */}
+            <AnimatePresence>
+              {isOpen && (
+                <motion.div
+                  initial="closed"
+                  animate="open"
+                  exit="closed"
+                  variants={menuVariants}
+                  className="fixed top-0 right-0 h-full w-64 bg-black shadow-lg z-40"
+                >
+                  <nav className="flex flex-col pt-20">
+                    <Link
+                      href="#"
+                      className="px-6 py-4 text-lg hover:bg-gray-800 transition-colors duration-200"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      About Us
+                    </Link>
+                    <Link
+                      href="#"
+                      className="px-6 py-4 text-lg hover:bg-gray-800 transition-colors duration-200"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Activities
+                    </Link>
+                    <Link
+                      href="#"
+                      className="px-6 py-4 text-lg hover:bg-gray-800 transition-colors duration-200"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Members
+                    </Link>
+                    <Link
+                      href="#"
+                      className="px-6 py-4 text-lg hover:bg-gray-800 transition-colors duration-200"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Blog
+                    </Link>
+                    <Link
+                      href="#"
+                      className="px-6 py-4 text-lg hover:bg-gray-800 transition-colors duration-200"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Tools
+                    </Link>
+                  </nav>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Backdrop */}
+            <AnimatePresence>
+              {isOpen && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 0.5 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 bg-black z-30"
+                  onClick={() => setIsOpen(false)}
+                />
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+    </ClerkProvider>
   );
 }
 
 const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
+  React.ComponentRef<"a">,
   React.ComponentPropsWithoutRef<"a">
 >(({ className, title, children, ...props }, ref) => {
   return (
@@ -178,7 +331,7 @@ export function FloatingNavDemo() {
     },
   ];
   return (
-    <div className="relative  w-full">
+    <div className="relative w-full">
       <FloatingNav navItems={navItems} />
     </div>
   );

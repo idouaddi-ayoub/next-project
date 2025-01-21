@@ -61,7 +61,7 @@ export default function HyperText({
   }, [text, duration, trigger, animateOnLoad]);
 
   return (
-    <div className="scale-100 cursor-default overflow-hidden pt-32 justify-center">
+    <div className="scale-100 cursor-default overflow-hidden pt-10 md:pt-32 sm:pt-32 justify-center lg:text-left text-center">
       <AnimatePresence>
         {displayText.map((letter, i) => (
           <motion.span

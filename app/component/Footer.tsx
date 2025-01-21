@@ -40,7 +40,7 @@ const Footer = () => {
     <footer className="bg-black w-full pt-20 p-10">
       <div className="flex justify-between items-start gap-20 flex-wrap max-lg:flex-col">
         <div className="flex flex-col items-center">
-          <Link href="/#">
+          <Link href="/">
             <Image
               src={CDI}
               alt="logo"

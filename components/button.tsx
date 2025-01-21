@@ -18,7 +18,7 @@ type Props = {
 
 export function ButtonShimmer(props: Props) {
   return (
-    <button className="inline-flex h-10 w-40 sm:w-80 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#4EB848,55%,#000103)] bg-[length:200%_100%] font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+    <button className="inline-flex h-12 w-44 lg:w-80 sm:w-40 xl:h-16 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#4EB848,55%,#000103)] bg-[length:200%_100%] font-medium text-white text-xl lg:text-3xl transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
       {props.children}
     </button>
   );
@@ -37,36 +37,42 @@ const people = [
     name: "John Doe",
     designation: "Software Engineer",
     image: bzi,
+    url: "https://youtube.com",
   },
   {
     id: 2,
     name: "Robert Johnson",
     designation: "Product Manager",
     image: bzi,
+    url: "https://youtube.com",
   },
   {
     id: 3,
     name: "Jane Smith",
     designation: "Data Scientist",
     image: bzi,
+    url: "https://youtube.com",
   },
   {
     id: 4,
     name: "Emily Davis",
     designation: "UX Designer",
     image: bzi,
+    url: "https://appah.com",
   },
   {
     id: 5,
     name: "Tyler Durden",
     designation: "Soap Developer",
     image: bzi,
+    url: "https://bzi.com",
   },
   {
     id: 6,
-    name: "Dora",
-    designation: "The Explorer",
+    name: "L3bliBih",
+    designation: "Lbrizidenté",
     image: bzi,
+    url: "https://youtube.com",
   },
 ];
 
@@ -93,7 +99,7 @@ export function EvervaultCardDemo() {
 
 export function BentoGridDemo() {
   return (
-    <BentoGrid className="max-w-4xl mx-auto">
+    <BentoGrid className="max-w-7xl mx-auto">
       {items.map((item, i) => (
         <BentoGridItem
           key={i}

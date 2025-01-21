@@ -3,37 +3,37 @@ import Marquee from "@/components/ui/marquee";
 
 const reviews = [
   {
-    name: "Jack",
-    username: "@jack",
+    name: "Club X",
+    username: "@ClubX",
     body: "I've never seen anything like this before. It's amazing. I love it.",
     img: "https://avatar.vercel.sh/jack",
   },
   {
-    name: "Jill",
-    username: "@jill",
+    name: "Club Y",
+    username: "@ClubY",
     body: "I don't know what to say. I'm speechless. This is amazing.",
     img: "https://avatar.vercel.sh/jill",
   },
   {
-    name: "John",
-    username: "@john",
+    name: "ClubZ",
+    username: "@ClubZ",
     body: "I'm at a loss for words. This is amazing. I love it.",
     img: "https://avatar.vercel.sh/john",
   },
   {
-    name: "Jane",
+    name: "TEST",
     username: "@jane",
     body: "I'm at a loss for words. This is amazing. I love it.",
     img: "https://avatar.vercel.sh/jane",
   },
   {
-    name: "Jenny",
+    name: "TEST101",
     username: "@jenny",
     body: "I'm at a loss for words. This is amazing. I love it.",
     img: "https://avatar.vercel.sh/jenny",
   },
   {
-    name: "James",
+    name: "TEST",
     username: "@james",
     body: "I'm at a loss for words. This is amazing. I love it.",
     img: "https://avatar.vercel.sh/james",
@@ -82,7 +82,7 @@ export default function Overview() {
   return (
     <div>
       <div className="text-6xl text-white text-center pb-20 pt-20">
-        LEROYS JUNKING
+        Relations
       </div>
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg md:shadow-xl ">
         <Marquee pauseOnHover className="[--duration:20s] pb-2">
@@ -95,8 +95,8 @@ export default function Overview() {
             <ReviewCard key={review.username} {...review} />
           ))}
         </Marquee>
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-gray-950"></div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-gray-950"></div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-gray-950 opacity-70"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-gray-950 opacity-70"></div>
       </div>
     </div>
   );

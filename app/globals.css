@@ -77,3 +77,9 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* clerk */
+.cl-avatarBox {
+  width: 2.5rem;
+  height: 2.5rem;
+}

@@ -1,45 +1,40 @@
 "use client";
 
 import HyperText from "@/components/ui/hyper-text";
-import {
-  AnimatedTooltipPreview,
-  ButtonShimmer,
-  EvervaultCardDemo,
-} from "@/components/button";
+import { AnimatedTooltipPreview, ButtonShimmer } from "@/components/button";
+import MotionLogo from "@/components/motionLogo";
 
 export default function Hero() {
   return (
     // add gradient bg green to black
     // <div className="bg-gradient-to-tr from-green-500 via-black to-green-900">
-    <div className="h-screen w-full flex justify-center md:pt-10 lg:pt-28 xl:pt-36">
-      <div className="lg:w-1/2 lg:pl-20 pl-10">
+    <div className="h-screen w-screen flex md:pt-10 lg:pt-24 xl:pt-32 flex-col sm:flex-row ">
+      <div className="sm:w-1/2 lg:pl-32 sm:pl-10 xs:mt-32">
         <HyperText
-          className="text-4xl sm:text-6xl lg:text-8xl font-bold text-white dark:text-white"
-          text="BECOME MORE"
+          className="text-3xl md:text-7xl lg:text-8xl font-bold text-white dark:text-white"
+          text="WELCOME TO CDI"
         />
-        <div className="text-2xl lg:text-6xl text-white pt-10 mr-30">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        <div className="text-2xl lg:text-6xl text-white pt-10 mr-30 lg:text-left text-center ml-2 mr-2">
+          Where Creating Digital Innovations is Fun and Friendships are Made
         </div>
-        <div className="min-[360px]:flex pt-10">
-          <div className="w-1/2 flex">
-            <ButtonShimmer>TEST</ButtonShimmer>
+        <div className="flex pt-10 justify-center sm:block">
+          <div className="mr-2 ml-4">
+            <ButtonShimmer>Discover </ButtonShimmer>
           </div>
-          <div className="w-1/2 pt-2 text-white text-center underline max-[360px]:pt-10">
-            Link
+          <div className="mr-4 ml-2">
+            <ButtonShimmer>Contact us</ButtonShimmer>
           </div>
         </div>
-        <div className="min-[400px]:flex pt-10">
-          <div className="w-1/2 max-[400px]:pr-14 max-[400px]:w-full ">
+        <div className="flex pt-10 justify-center sm:block">
+          <div className="flex ">
             <AnimatedTooltipPreview />
-          </div>
-          <div className="w-1/2 text-white text-center">
-            40k + <br />
-            Active users
           </div>
         </div>
       </div>
-      <div className="text-8xl text-white w-1/2 pt-36 text-center hidden lg:block">
-        <EvervaultCardDemo />
+      <div className="justify-center flex">
+        <div className="xs:w-72 md:pt-10 sm:w-1/2 ">
+          <MotionLogo />
+        </div>
       </div>
     </div>
     // </div>
